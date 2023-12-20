@@ -4,8 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <script src="/app.js"></script>
+<body class="main">
+    
+    <label for="searchValue">Enter Value:</label>
+    <input type="text" id="searchValue">
+
+
+
+ 
+    <select id="searchBy">
+        <option  value="brand">brand</option> 
+        <option value="model">model</option> 
+        <option   value="price">price</option> 
+        <option   value="camera">camera</option> 
+        <option   value="ram">ram</option> 
+        <option    value="rom">rom</option> 
+    </select>
+
+   
+
+    <button onclick="searchPhones()">Search</button>
+    <div id="cards">
+
+    </div>
+
+    <div id="result">
+       
+    </div>
+<script src="app.js"></script>
 </body>
 </html>

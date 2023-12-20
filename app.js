@@ -1,105 +1,142 @@
-// ***************************** Class Assignment******************************
-// Q1
+let arr = [
+    {
+        brand: "samsung",
+        model: "samsungA30",
+        price: "40000",
+        camera: "40px",
+        ram: "8gb",
+        rom : "128gb",
+        
+    },
+    {
+        brand: "samsung",
+        model: "samsungA10",
+        price: "40000",
+        camera: "40px",
+        ram: "4gb",
+        rom : "128gb",
+        
+    },
+    {
+        brand: "samsung",
+        model: "samsungA20",
+        price: "40000",
+        camera: "40px",
+        ram: "4gb",
+        rom : "128gb",
+        
+    },
+    {
+        brand: "vivo",
+        model: "vivoY20",
+        price: "20000",
+        camera: "40px",
+        ram: "2gb",
+        rom : "32gb",
+        
+    },
+    {
+        brand: "vivo",
+        model: "vivoY11",
+        price: "20000",
+        camera: "40px",
+        ram: "3gb",
+        rom : "32gb",
+        
+    },
+    {
+        brand: "vivo",
+        model: "vivoY15",
+        price: "30000",
+        camera: "40px",
+        ram: "4gb",
+        rom : "64gb",
+        
+    },
+    {
+        brand: "motorola",
+        model: "motorola123",
+        price: "5000",
+        camera: "2px",
+        ram: "2gb",
+        rom : "32gb",
+        
+    },
+    {
+        brand: "iphone",
+        model: "iphone12",
+        price: "300000",
+        camera: "40px",
+        ram: "8gb",
+        rom : "128gb",
+        
+    },
+    {
+        brand: "iphone",
+        model: "iphone13",
+        price: "300000",
+        camera: "40px",
+        ram: "8gb",
+        rom : "128gb",
+        
+    },
+    {
+        brand: "iphone",
+        model: "iphoneX",
+        price: "300000",
+        camera: "40px",
+        ram: "8gb",
+        rom : "128gb",
+        
+    },
+]
+const cards = document.getElementById("cards");
+ 
+arr.map((current_object) => {
+  const { brand, model, price, camera, ram,rom } = current_object;
 
-// Q2
+  return (cards.innerHTML += `<ul>
+    <li>brand: ${brand} </li>
+    <li>model: ${model}</li>
+    <li>price: ${price} </li>
+    <li>camera: ${camera} </li>
+    <li>ram: ${ram} </li>
+    <li>rom: ${rom} </li>
+  </ul>`);
+});
+function searchPhones() {
+    const searchBy = document.getElementById('searchBy').value;
+    const searchValue = document.getElementById('searchValue').value.toLowerCase();
 
-// Q3
-for(var i=1;i<=10;i++){document.write("<br>" ,i);}
-//  Q4
-var user=+prompt("enter");
+    const filteredPhones = arr.filter(phone => {
+    
+        const attributeValue = phone[searchBy].toString().toLowerCase();
+        return attributeValue.includes(searchValue);
+    });
 
- var table=+prompt("enter");
+    displayResults(filteredPhones);
+}
 
- for (var i=1;i<=table;i++){
-     document.write("user"+"x"+i+"="+user*i+"<br>")
-  }
-// Q5
+function displayResults(results) {
+    const resultContainer = document.getElementById('result');
+    resultContainer.innerHTML = '';
 
-var fruits=["banana","mango","apple","orange"];
-  for(var i=0;i<fruits.length;i++){
-     console.log("element of"+fruits[i]+"at"+""+i);
-}
-// Q6
-document.write("<br> <h1>Counting</h1> <br>")
-for(var i=1; i<=15;i++){
-    document.write(i+",")
-}
-document.write("<br> <h1>Reverse counting </h1> <br>")
-for(var i=10; i>=1;i--){
-    document.write(i+",")
-}
-document.write("<br> <h1>Even counting </h1> <br>")
-for(var i=0; i<=20;i=i+2){
-    document.write(i+",")
-}
-document.write("<br> <h1>odd counting </h1> <br>")
-for(var i=1; i<=19;i=i+2){
-    document.write(i+",")
-}
-document.write("<br> <h1>series counting </h1> <br>")
-for(var i=2; i<=20;i=i+2){
-    document.write(i+"k,")
-}
-document.write("<br>")
-// Q10
-for(var i=5; i<=100; i=i+5){
-    document.write( i+ ",")
-}
-// ***************************** Home Assignment******************************
-// Q1
-for(var i=1 ; i<=10 ;i++){
-console.log(i)
-}
-// Q2
-for(var i=0 ; i<=11 ;i++){
-    console.log(i)
-}
-// Q3
-for (var i=0 ;i<=4 ;i++){
-    console.log(i)
-}
-// Q4
-for(var a=0;a<=99;a++){
-    console.log(a)
-}
-// Q5
-for(var i=3; i>=1; i--)
-{
-    console.log(i)
-}
-// Q6
- var arrayy=[10,20,30,40]
-//  Q7
-var flag = true
-// Q8
-var pets=["cat","dog","parrot","chickens"]
-for(var i=0; i<pets.length;i++){
-    console.log(i)
-}
-// Q9
-for (var i=0; i<=10;i++){
-    if(i===1){
-        break;
+    if (results.length === 0) {
+        resultContainer.innerHTML = '<p>No results found.</p>';
+    } else {
+        cards.innerHTML=""
+        results.forEach(current_object => {
+            const { brand, model, price, camera, ram,rom } = current_object;
+            const phoneInfo = document.createElement('p');
+            phoneInfo.innerHTML = `<ul>
+            <li>brand: ${brand} </li>
+            <li>model: ${model}</li>
+            <li>price: ${price} </li>
+            <li>camera: ${camera} </li>
+            <li>ram: ${ram} </li>
+            <li>rom: ${rom} </li>
+          </ul>` ;
+            resultContainer.appendChild(phoneInfo);
+        });
     }
 }
-// Q10
-var firstName=["omamah","junaid","ali","bilal"]
-var userinput=prompt("Enter username")
-for (var i = 0; i <firstName.length; i++) {
- if (userinput=== firstName[i]) {
- alert(userinput);
-    }
-    else{
-        alert("sorry enter correct username")
-    }
-}
-// Q12
-var firstArr = ["a", "b", "c", "d", "e", "f"];
-var secondArr = [1, 2, 3, 4, 5, 6];
-
-for (var i = 0; i < firstArr.length; i++) {
-  for (var j = 0; j < secondArr.length; j++) {
-    console.log(firstArr[i] + secondArr[j]);
-  }
-}
-
